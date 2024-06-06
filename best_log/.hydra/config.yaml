@@ -1,0 +1,133 @@
+seed: 2024
+device: 2+3+4+5+6+7
+debug: false
+mixed_precision: false
+train_conf:
+  only_first_fold: true
+  n_folds: 5
+  epochs: 30
+  val_interval: 0.5
+data_conf:
+  data_root: ./data
+  n_max: -1
+  v_dataset: v2
+  v_speed: v1_7200
+  v_field: v1_7200
+  batch_size: 5
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  preprocess: fixed
+model_type: bfnov3
+load_conf:
+  load: false
+  folder: None
+fno_conf:
+  input_dim: 6
+  lifting_size: 60
+  lifting: None
+  proj: None
+  wavenumber:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  padding: 32
+  activation: gelu
+  use_bn: true
+  simplified_fourier: true
+kanfno_conf:
+  input_dim: 6
+  lifting_size: 20
+  lifting: None
+  proj: None
+  wavenumber:
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  padding: 32
+  activation: relu
+  grid_size: 3
+  load_weights: false
+  ckpt_folder: None
+  fixed_backbone: false
+  use_bn: false
+afno_conf:
+  patch_size:
+  - 16
+  - 16
+  embed_dim: 256
+  depth: 4
+  mlp_ratio: 4.0
+  drop_rate: 0.0
+  num_blocks: 16
+  sparsity_threshold: 0.01
+  hard_thresholding_fraction: 1.0
+hrnet_conf:
+  INPUT_CHANNEL: 6
+  OUT_CHANNEL: 2
+  STEM_INPLANES: 64
+  FINAL_CONV_KERNEL: 1
+  WITH_HEAD: true
+  STAGE1:
+    NUM_MODULES: 1
+    NUM_BRANCHES: 1
+    NUM_BLOCKS:
+    - 4
+    NUM_CHANNELS:
+    - 32
+    BLOCK: BASIC
+    FUSE_METHOD: SUM
+  STAGE2:
+    NUM_MODULES: 1
+    NUM_BRANCHES: 2
+    NUM_BLOCKS:
+    - 4
+    - 4
+    NUM_CHANNELS:
+    - 32
+    - 64
+    BLOCK: BASIC
+    FUSE_METHOD: SUM
+  STAGE3:
+    NUM_MODULES: 1
+    NUM_BRANCHES: 3
+    NUM_BLOCKS:
+    - 4
+    - 4
+    - 4
+    NUM_CHANNELS:
+    - 32
+    - 64
+    - 128
+    BLOCK: BASIC
+    FUSE_METHOD: SUM
+  STAGE4:
+    NUM_MODULES: 1
+    NUM_BRANCHES: 4
+    NUM_BLOCKS:
+    - 4
+    - 4
+    - 4
+    - 4
+    NUM_CHANNELS:
+    - 32
+    - 64
+    - 128
+    - 256
+    BLOCK: BASIC
+    FUSE_METHOD: SUM
+loss_conf:
+  loss_type: rrmse
+optim_conf:
+  type: adam
+  lr: 0.006
+  weight_decay: 0
+  scheduler: cosine

@@ -1,0 +1,17 @@
+- data_conf.v_speed=v1_7200
+- data_conf.v_field=v1_7200
+- data_conf.v_dataset=v2
+- loss_conf.loss_type=rrmse
+- device=2+3+4+5+6+7
+- data_conf.batch_size=5
+- train_conf.only_first_fold=True
+- train_conf.epochs=30
+- model_type=bfnov3
+- fno_conf.lifting_size=60
+- fno_conf.wavenumber=[100,100,100,100,100,100,100]
+- data_conf.preprocess=fixed
+- optim_conf.lr=6e-3
+- optim_conf.weight_decay=0
+- fno_conf.activation=gelu
+- fno_conf.use_bn=True
+- fno_conf.simplified_fourier=True
