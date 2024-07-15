@@ -2,6 +2,10 @@
 
 [AI4S Cup - 超声CT成像中的声场预测](https://bohrium.dp.tech/competitions/2512153120?tab=introduce) 正向解算私榜第二名方案。
 
+训练解读：https://bohrium.dp.tech/notebooks/98368352314
+
+推理解读：https://bohrium.dp.tech/notebooks/14924833825
+
 ## 特性
 
 * 基于PyTorch的Dataset和Dataloader
